@@ -1,0 +1,207 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050507; /* Preto profundo */
+    color: #f4f4f6;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Canvas de partículas no fundo */
+#particulas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    text-align: center;
+    padding: 60px 20px 30px;
+    position: relative;
+}
+
+.bola-cristal {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: radial-gradient(circle at 30% 30%, #a855f7, #1e1b4b 70%, #000000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    animation: flutuar 3.5s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.bola-cristal:hover {
+    transform: scale(1.1);
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.titulo-principal {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: #d4af37; /* Dourado místico */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: #c4b5fd;
+    min-height: 28px;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.btn-mistico {
+    background: transparent;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    padding: 12px 28px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-mistico:hover {
+    background: #d4af37;
+    color: #050507;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
+}
+
+/* Container das 3 Seções (Cartas) */
+.container-cartas {
+    max-width: 1150px;
+    margin: 20px auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    flex: 1;
+}
+
+/* Estilo de cada Seção como Carta de Tarô */
+.carta {
+    background: linear-gradient(145deg, #0e0e14, #07070a);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 16px;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(138, 43, 226, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.4s ease, opacity 0.8s ease;
+    transform-style: preserve-3d;
+    
+    /* Estado inicial para animação de entrada via JS */
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.carta.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carta:hover {
+    border-color: #d4af37;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.35);
+}
+
+.carta-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.numero-romano {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #d4af37;
+    font-weight: 800;
+}
+
+.icone {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+}
+
+.carta h2 {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: 1.45rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.carta p {
+    color: #d1d5db;
+    line-height: 1.7;
+    font-size: 0.98rem;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+
+.carta strong {
+    color: #f3e8ff;
+}
+
+.carta-rodape {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: #a855f7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    padding-top: 12px;
+}
+
+/* Rodapé */
+.rodape {
+    text-align: center;
+    padding: 25px;
+    background-color: #020203;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    .titulo-principal {
+        font-size: 2.3rem;
+        letter-spacing: 3px;
+    }
+}
